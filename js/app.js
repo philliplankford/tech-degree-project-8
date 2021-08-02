@@ -27,7 +27,7 @@ function displayEmployees(employeeData) {
         let picture = employee.picture;
 
         employeeHTML += `
-            <div class='employee-card'> 
+            <div class='employee-card' data-index='${index}'> 
                 <img src='${picture.large}'>
                 <div class='employee-info'>
                     <p>${name.first} ${name.last}</p>
@@ -39,3 +39,42 @@ function displayEmployees(employeeData) {
     })
     grid.innerHTML = employeeHTML;
 }
+
+function displayModal(index) {
+    //object destructing
+    let { name, dob, phone, email, location: { street, city, state, postcode }, picture } = employees[index];
+
+    let date = new Date(dob.date);
+
+    const modalHTML = `
+        <img src='${picture.large}'>
+        <div class='text-container'> 
+            <p>${name.first} ${name.last}</p>
+            <p>${email}</p>
+            <p>${city}</p>
+            <hr />
+            <p>${phone}</p>
+            <p>${street.number} ${street.name}, ${state} ${postcode}</p>
+            <p>${city}</p>
+            <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        </div>
+    `;
+
+    overlay.classList.remove('hidden');
+    modal.innerHTML = modalHTML;
+}
+
+grid.addEventListener('click', (e) => {
+    if (e.target !== grid) {
+
+        const card = e.target.closest('.employee-card');
+        const index = card.getAttribute('data-index');
+
+        displayModal(index);
+    }
+});
+
+modalClose.addEventListener('click', () => {
+    overlay.classList.add('hidden');
+    modal.innerHTML = '';
+})

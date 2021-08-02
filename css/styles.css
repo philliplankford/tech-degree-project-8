@@ -352,9 +352,12 @@ h1 {
 
 body {
   position: relative;
+  background-color: #eee;
+}
+
+.wrapper {
   max-width: 90%;
   margin: 0 auto;
-  background-color: #eee;
 }
 
 header {
@@ -362,7 +365,7 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  margin-top: 40px;
+  padding-top: 40px;
 }
 header input {
   padding: 5px;
@@ -416,16 +419,26 @@ img {
   right: 0;
   bottom: 0;
   background: rgba(100, 100, 100, 0.4);
+  height: 100vh;
+}
+
+.text-container h2,
+.text-container p,
+.text-container hr {
+  margin-bottom: 20px;
 }
 
 .modal {
   position: relative;
-  width: 50%;
+  width: 30%;
   background-color: #fff;
   margin: 15% auto auto;
   text-align: center;
   padding: 15px;
   border-radius: 7px;
+}
+.modal img {
+  margin: 0 0 10px 0;
 }
 
 .modal-close {
@@ -433,12 +446,8 @@ img {
   right: 15px;
   top: 5px;
   cursor: pointer;
-}
-
-.text-container h2,
-.text-container p,
-.text-container hr {
-  margin-bottom: 15px;
+  border: none;
+  background-color: transparent;
 }
 
 /*# sourceMappingURL=styles.css.map */
