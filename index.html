@@ -8,10 +8,10 @@
         <link rel='stylesheet' href='css/styles.css'>
     </head>
     <body>
-        <div class=wrapper>
+        <div class='wrapper'>
             <header>
                 <h1>Startup Employee Directory</h1>
-                <input type='search' placeholder='Employee search...'>
+                <input type='search' id='search-bar' placeholder='Employee search...'>
             </header>
             <main>
                 <div class='grid-container'>
@@ -21,6 +21,8 @@
         <div class='overlay hidden'>
             <div class='modal'>
                 <button class='modal-close'>X</button>
+                <button class='arrow' id='left'>back</button>
+                <button class='arrow' id='right'>next</button>
                 <div class='modal-content'>
                     <img src='img/member-1.jpg'/>
                     <div class='text-container'>

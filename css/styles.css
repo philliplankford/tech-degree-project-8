@@ -436,9 +436,15 @@ img {
   text-align: center;
   padding: 15px;
   border-radius: 7px;
+  color: gray;
+  font-size: 0.9rem;
 }
 .modal img {
   margin: 0 0 10px 0;
+}
+.modal p:first-child {
+  color: black;
+  font-size: 1.2rem;
 }
 
 .modal-close {
@@ -448,6 +454,27 @@ img {
   cursor: pointer;
   border: none;
   background-color: transparent;
+}
+
+.arrow {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid gray;
+  border-radius: 7px;
+}
+
+#right {
+  position: absolute;
+  right: -70px;
+  bottom: 200px;
+  cursor: pointer;
+}
+
+#left {
+  position: absolute;
+  left: -70px;
+  bottom: 200px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */

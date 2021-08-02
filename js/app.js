@@ -1,12 +1,18 @@
 
 // globals 
+let employeeNum = 12;
 let employees = []; //holds API vals 
-const apiUrl = `https://randomuser.me/api/?results=12&inc=name, picture, email, location, phone, dob &noinfo &nat=US`; // the api to connect to + specific filters
+const apiUrl = `https://randomuser.me/api/?results=${employeeNum}&inc=name, picture, email, location, phone, dob &noinfo &nat=US`; // the api to connect to + specific filters
 // hold DOM elements
 const grid = document.querySelector('.grid-container');
 const overlay = document.querySelector('.overlay');
 const modal = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.modal-close');
+
+const searchBar = document.querySelector('#search-bar');
+
+const modalRight = document.querySelector('#right');
+const modalLeft = document.querySelector('#left');
 
 
 fetch(apiUrl) // fetch handles the xml object
@@ -30,7 +36,7 @@ function displayEmployees(employeeData) {
             <div class='employee-card' data-index='${index}'> 
                 <img src='${picture.large}'>
                 <div class='employee-info'>
-                    <p>${name.first} ${name.last}</p>
+                    <p class='employee-name'>${name.first} ${name.last}</p>
                     <p>${email}</p>
                     <p>${city}</p>
                 </div>
@@ -77,4 +83,39 @@ grid.addEventListener('click', (e) => {
 modalClose.addEventListener('click', () => {
     overlay.classList.add('hidden');
     modal.innerHTML = '';
+})
+
+let modalPlace = 0;
+
+modalRight.addEventListener('click', () => {
+    if (modalPlace === employeeNum - 1) { 
+        modalPlace = 0;
+        displayModal(modalPlace); 
+    } 
+    else {
+        modalPlace++;
+        displayModal(modalPlace);
+    }
+})
+
+modalLeft.addEventListener('click', () => {
+    if (modalPlace === 0) { 
+        modalPlace = employeeNum - 1;
+        displayModal(modalPlace); 
+    } 
+    else {
+        modalPlace--;
+        displayModal(modalPlace);
+    }
+})
+
+searchBar.addEventListener('keyup', () => {
+    let allEmployees = document.querySelectorAll('.employee-name');
+    let search = searchBar.value.toLowerCase();
+
+    allEmployees.forEach( employeeName => {
+        if (employeeName.textContent.toLowerCase().includes(search)) {
+            employeeName.parentNode.parentNode.style.display = 'flex';
+        } else { employeeName.parentNode.parentNode.style.display = 'none' }
+    })
 })
