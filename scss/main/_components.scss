@@ -8,12 +8,12 @@
 h1 {
     font-weight: 600;
     font-size: 1rem;
-    color: gray;
+    color: $col-accent;
 }
 
 body {
     position: relative;
-    background-color: #eee;
+    background-color: $col-background;
 }
 
 .wrapper {
@@ -41,8 +41,13 @@ img {
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    @media(min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media(min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
     grid-gap: 20px;
     max-width: 100%;
 }
@@ -51,20 +56,20 @@ img {
     display: flex;
     justify-content: left;
     align-items: center;
-    background-color: #fff;;
-    border: 1px solid gray;
+    background-color: $col-white;
+    border: 1px solid $col-accent;
     border-radius: 7px;
     padding: 20px;
 }
 
 .employee-info {
-    color: gray;
+    color: $col-accent;
     font-size: .7rem;
     p {
         margin: 5px 0px;
     }
     p:first-child {
-        color: black;
+        color: $col-bold;
         font-size: .9rem;
     }
 }
@@ -79,7 +84,7 @@ img {
     left: 0; 
     right: 0; 
     bottom: 0; 
-    background: rgba(100, 100, 100, 0.4);
+    background: rgba(100, 100, 100, 0.5);
     height: 100vh;
 }
 
@@ -93,19 +98,18 @@ img {
 
 .modal {
     position: relative;
-    width: 30%; 
-    background-color: #fff;
+    width: 35%; 
+    background-color: $col-white;
     margin: 15% auto auto; 
     text-align: center; 
-    padding: 15px;
     border-radius: 7px;
-    color: gray;
+    color: $col-accent;
     font-size: .9rem;
     img {
         margin: 0 0 10px 0;
     }
     p:first-child {
-        color: black;
+        color: $col-bold;
         font-size: 1.2rem;
     }
 }
@@ -121,21 +125,17 @@ img {
 
 .arrow {
     padding: 10px;
-    background-color: white;
-    border: 1px solid gray;
+    background-color: $col-white;
+    border: 1px solid $col-accent;
     border-radius: 7px;
 }
 
 #right {
-    position:absolute;
+    @include modal-buttons;
     right: -70px;
-    bottom: 200px;
-    cursor: pointer
 }
 
 #left{
-    position:absolute;
+    @include modal-buttons;
     left: -70px;
-    bottom: 200px;
-    cursor: pointer
 }

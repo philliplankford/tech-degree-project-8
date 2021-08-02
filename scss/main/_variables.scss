@@ -1,0 +1,10 @@
+$col-background: #eee;
+$col-accent: gray;
+$col-white: white;
+$col-bold: black;
+
+@mixin modal-buttons {
+    position:absolute;
+    bottom: 200px;
+    cursor: pointer;
+}

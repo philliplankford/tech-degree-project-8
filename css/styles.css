@@ -380,17 +380,26 @@ img {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-gap: 20px;
   max-width: 100%;
+}
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .employee-card {
   display: flex;
   justify-content: left;
   align-items: center;
-  background-color: #fff;
+  background-color: white;
   border: 1px solid gray;
   border-radius: 7px;
   padding: 20px;
@@ -418,7 +427,7 @@ img {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(100, 100, 100, 0.4);
+  background: rgba(100, 100, 100, 0.5);
   height: 100vh;
 }
 
@@ -430,11 +439,10 @@ img {
 
 .modal {
   position: relative;
-  width: 30%;
-  background-color: #fff;
+  width: 35%;
+  background-color: white;
   margin: 15% auto auto;
   text-align: center;
-  padding: 15px;
   border-radius: 7px;
   color: gray;
   font-size: 0.9rem;
@@ -465,16 +473,16 @@ img {
 
 #right {
   position: absolute;
-  right: -70px;
   bottom: 200px;
   cursor: pointer;
+  right: -70px;
 }
 
 #left {
   position: absolute;
-  left: -70px;
   bottom: 200px;
   cursor: pointer;
+  left: -70px;
 }
 
 /*# sourceMappingURL=styles.css.map */

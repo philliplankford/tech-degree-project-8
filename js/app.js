@@ -1,7 +1,7 @@
 
 // globals 
 const employeeNum = 12; // sets total number of displayed emplyees
-let employees = []; //holds API vals 
+let employees = []; // holds API vals 
 const apiUrl = `https://randomuser.me/api/?results=${employeeNum}&inc=name, picture, email, location, phone, dob &noinfo &nat=US`; // the api to connect to + specific filters
 // hold DOM elements
 const grid = document.querySelector('.grid-container');
