@@ -1,6 +1,6 @@
 
 // globals 
-let employeeNum = 12;
+const employeeNum = 12; // sets total number of displayed emplyees
 let employees = []; //holds API vals 
 const apiUrl = `https://randomuser.me/api/?results=${employeeNum}&inc=name, picture, email, location, phone, dob &noinfo &nat=US`; // the api to connect to + specific filters
 // hold DOM elements
@@ -15,8 +15,8 @@ const modalRight = document.querySelector('#right');
 const modalLeft = document.querySelector('#left');
 
 
-fetch(apiUrl) // fetch handles the xml object
-    .then(res => res.json()) // converts the results returned from the api to a json string
+fetch(apiUrl) 
+    .then(res => res.json()) 
     .then(res => res.results)
     .then(displayEmployees)
     .catch(err => console.log(err))
@@ -47,7 +47,7 @@ function displayEmployees(employeeData) {
 }
 
 function displayModal(index) {
-    //object destructing
+    //object deconstruction
     let { name, dob, phone, email, location: { street, city, state, postcode }, picture } = employees[index];
 
     let date = new Date(dob.date);
@@ -80,42 +80,49 @@ grid.addEventListener('click', (e) => {
     }
 });
 
-modalClose.addEventListener('click', () => {
-    overlay.classList.add('hidden');
-    modal.innerHTML = '';
-})
+// modal
 
 let modalPlace = 0;
 
-modalRight.addEventListener('click', () => {
-    if (modalPlace === employeeNum - 1) { 
-        modalPlace = 0;
-        displayModal(modalPlace); 
-    } 
-    else {
-        modalPlace++;
-        displayModal(modalPlace);
+const modalCheck = document.querySelector('.modal');
+
+modalCheck.addEventListener('click', (e) => {
+    const modalMax = employeeNum - 1;
+    switch (e.target) {
+        case modalRight: 
+            if (modalPlace === modalMax) { 
+                modalPlace = 0;
+            } 
+            else {
+                modalPlace++;
+            }
+            displayModal(modalPlace); 
+        break;
+        case modalLeft: 
+            if (modalPlace === 0) { 
+                modalPlace = modalMax;
+            } 
+            else {
+                modalPlace--;
+            }
+            displayModal(modalPlace); 
+        break;
+        case modalClose: 
+            overlay.classList.add('hidden');
+            modal.innerHTML = '';
+        break;
     }
 })
 
-modalLeft.addEventListener('click', () => {
-    if (modalPlace === 0) { 
-        modalPlace = employeeNum - 1;
-        displayModal(modalPlace); 
-    } 
-    else {
-        modalPlace--;
-        displayModal(modalPlace);
-    }
-})
+// filter 
 
 searchBar.addEventListener('keyup', () => {
     let allEmployees = document.querySelectorAll('.employee-name');
     let search = searchBar.value.toLowerCase();
 
     allEmployees.forEach( employeeName => {
-        if (employeeName.textContent.toLowerCase().includes(search)) {
-            employeeName.parentNode.parentNode.style.display = 'flex';
-        } else { employeeName.parentNode.parentNode.style.display = 'none' }
+        if (!employeeName.textContent.toLowerCase().includes(search)) {
+            employeeName.parentNode.parentNode.style.display = 'none';
+        } else { employeeName.parentNode.parentNode.style.display = 'flex' }
     })
 })
