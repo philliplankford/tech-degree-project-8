@@ -34,7 +34,7 @@ function displayEmployees(employeeData) {
 
         employeeHTML += `
             <div class='employee-card' data-index='${index}'> 
-                <img src='${picture.large}'>
+                <img src='${picture.large}' alt='a portrait of ${name.first} ${name.last}' >
                 <div class='employee-info'>
                     <p class='employee-name'>${name.first} ${name.last}</p>
                     <p>${email}</p>
@@ -53,7 +53,7 @@ function displayModal(index) {
     let date = new Date(dob.date);
 
     const modalHTML = `
-        <img src='${picture.large}'>
+        <img src='${picture.large}' alt='a portrait of ${name.first} ${name.last}'>
         <div class='text-container'> 
             <p>${name.first} ${name.last}</p>
             <p>${email}</p>
