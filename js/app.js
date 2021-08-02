@@ -14,6 +14,8 @@ const searchBar = document.querySelector("#search-bar");
 const modalRight = document.querySelector("#right");
 const modalLeft = document.querySelector("#left");
 
+let modalPlace = 0;
+
 
 fetch(apiUrl)
     .then((res) => res.json())
@@ -78,14 +80,13 @@ grid.addEventListener("click", (e) => {
 
         const card = e.target.closest(".employee-card");
         const index = card.getAttribute("data-index");
+        modalPlace = index;
 
         displayModal(index);
     }
 });
 
 // modal
-
-let modalPlace = 0;
 
 const modalCheck = document.querySelector(".modal");
 
