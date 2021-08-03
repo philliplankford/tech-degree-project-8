@@ -80,7 +80,7 @@ grid.addEventListener("click", (e) => {
 
         const card = e.target.closest(".employee-card");
         const index = card.getAttribute("data-index");
-        modalPlace = index;
+        modalPlace = parseInt(index);
 
         displayModal(index);
     }
